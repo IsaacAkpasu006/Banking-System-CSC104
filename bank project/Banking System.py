@@ -62,7 +62,36 @@ class BankApp:
 
         btn_current = tk.Button(self.root, text="CURRENT ACCOUNT", width=30, command=self.current_menu)
         btn_current.pack(pady=10)
-    
+
+    def savings_menu(self):
+        self.clear_window()
+
+        label = tk.Label(self.root, text=f"Savings Account Balance: {self.savings.get_balance()}", font=("Time New Roman", 20))
+        label.pack(pady=10)
+
+        deposit_frame = tk.Frame(self.root)
+        deposit_frame.pack(pady=10)
+        tk.Label(deposit_frame, text="Deposit Amount:").pack(side=tk.LEFT)
+        self.savings_deposit_entry = tk.Entry(deposit_frame)
+        self.savings_deposit_entry.pack(side=tk.LEFT)
+
+        withdraw_frame = tk.Frame(self.root)
+        withdraw_frame.pack(pady=10)
+        tk.Label(withdraw_frame, text="Withdraw Amount:").pack(side=tk.LEFT)
+        self.savings_withdraw_entry = tk.Entry(withdraw_frame)
+        self.savings_withdraw_entry.pack(side=tk.LEFT)
+
+        btn_deposit = tk.Button(self.root, text="DEPOSIT", command=self.savings_deposit)
+        btn_deposit.pack(pady=10)
+
+        btn_withdraw = tk.Button(self.root, text="WITHDRAW", command=self.savings_withdraw)
+        btn_withdraw.pack(pady=10)
+
+        btn_back = tk.Button(self.root, text="RETURN", command=self.create_main_menu)
+        btn_back.pack(pady=10)
+
+        self.update_savings_balance()
+
 
 
 if __name__ == "__main__":

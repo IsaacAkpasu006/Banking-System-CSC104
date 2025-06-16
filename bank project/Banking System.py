@@ -42,6 +42,26 @@ class CurrentAccount:
 
 
 class BankApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("BINGHAM BANKING SYSTEM")
+        
+        self.savings = SavingsAccount(1520000, 500000)
+        self.current = CurrentAccount(2500000)
+
+        self.create_main_menu()
+
+    def create_main_menu(self):
+        self.clear_window()
+
+        label = tk.Label(self.root, text="ACCOUNT PROFILE", font=("Time New Roman", 20))
+        label.pack(pady=20)
+
+        btn_savings = tk.Button(self.root, text="SAVINGS ACCOUNT", width=30, command=self.savings_menu)
+        btn_savings.pack(pady=10)
+
+        btn_current = tk.Button(self.root, text="CURRENT ACCOUNT", width=30, command=self.current_menu)
+        btn_current.pack(pady=10)
     
 
 
